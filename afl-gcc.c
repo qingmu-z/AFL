@@ -72,6 +72,7 @@ static u8   be_quiet,               /* Quiet mode                        */
 static void find_as(u8* argv0) {
   /* 从环境变量AFL_PATH中获取AFL的路径 */
   u8 *afl_path = getenv("AFL_PATH");
+  u8 *slash, *tmp;
   
   /* 如果AFL_PATH存在 */
   if (afl_path) {
@@ -95,6 +96,7 @@ static void find_as(u8* argv0) {
   
   /* 如果找到了路径分隔符 */
   if (slash) {
+    u8 *dir;
     /* 截取程序路径直到最后一个斜杠 */
     *slash = 0;
     dir = ck_strdup(argv0);

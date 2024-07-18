@@ -155,7 +155,9 @@ static const u8* trampoline_fmt_64 =
   "\n"
   "/* --- END --- */\n"
   "\n";
-
+// fprintf(outf, use_64bit ? trampoline_fmt_64 : trampoline_fmt_32, R(MAP_SIZE));
+// "movq $0x%08x, %%rcx\n" %08x是占位符，最终使用R(MAP_SIZE)替换
+// #  define R(x) (random() % (x))
 static const u8* main_payload_32 = 
 
   "\n"
